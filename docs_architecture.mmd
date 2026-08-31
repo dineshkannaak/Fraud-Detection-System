@@ -1,0 +1,14 @@
+flowchart TD
+    A[Transaction input] --> B[Streamlit frontend]
+    B --> C[FastAPI request controls]
+    C --> D[Pydantic validation]
+    D --> E[Saved Time and Amount scalers]
+    E --> F[XGBoost model]
+    F --> G[Isotonic probability calibration]
+    G --> H[Business threshold and risk category]
+    H --> I[Recommendation and optional SHAP reasons]
+    I --> J[Prediction response]
+    C --> K[Request IDs, metrics, rate limit, API key]
+    L[creditcard.csv] --> M[Leakage-safe training]
+    M --> N[MLflow, reports, artifacts]
+    N --> F

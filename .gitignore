@@ -1,0 +1,23 @@
+.env
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ipynb_checkpoints/
+
+# Private or generated data
+*.csv
+mlruns/
+outputs/
+logs/
+
+# Keep model artifacts for deployment
+models/*
+!models/.gitkeep
+!models/*.pkl
+!models/*.json
+
+data/*
+!data/.gitkeep

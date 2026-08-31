@@ -1,0 +1,14 @@
+.git
+.github
+.venv
+venv
+__pycache__
+*.pyc
+.env
+.ipynb_checkpoints
+mlruns
+logs
+outputs
+*.csv
+*.ipynb
+fraud_*.pdf

@@ -1,0 +1,123 @@
+{
+  "model_name": "XGBoost Fraud Detection Model",
+  "model_version": "xgboost-v1.0.0",
+  "training_date": "2026-08-31",
+  "feature_order": [
+    "Time",
+    "V1",
+    "V2",
+    "V3",
+    "V4",
+    "V5",
+    "V6",
+    "V7",
+    "V8",
+    "V9",
+    "V10",
+    "V11",
+    "V12",
+    "V13",
+    "V14",
+    "V15",
+    "V16",
+    "V17",
+    "V18",
+    "V19",
+    "V20",
+    "V21",
+    "V22",
+    "V23",
+    "V24",
+    "V25",
+    "V26",
+    "V27",
+    "V28",
+    "Amount"
+  ],
+  "feature_count": 30,
+  "leakage_audit": {
+    "duplicate_overlap_by_split_pair": {
+      "split_0_split_1": 0,
+      "split_0_split_2": 0,
+      "split_0_split_3": 0,
+      "split_1_split_2": 0,
+      "split_1_split_3": 0,
+      "split_2_split_3": 0
+    },
+    "leakage_detected": false
+  },
+  "dataset_rows": 283726,
+  "legitimate_cases": 283253,
+  "fraud_cases": 473,
+  "fraud_rate": 0.001667101358352777,
+  "evaluated_thresholds": [
+    0.3,
+    0.4,
+    0.5,
+    0.6,
+    0.7,
+    0.8
+  ],
+  "imbalance_method": "scale_pos_weight",
+  "threshold_selection": "minimum validation business cost after calibration",
+  "probability_calibration": "isotonic_regression",
+  "parameters": {
+    "random_state": 42,
+    "train_fraction": 0.7,
+    "validation_fraction": 0.1,
+    "calibration_fraction": 0.1,
+    "test_fraction": 0.1,
+    "scale_pos_weight": 599.02416918429,
+    "decision_threshold": 0.065,
+    "fn_cost": 122.21,
+    "fp_cost": 5.0,
+    "review_cost": 1.0
+  },
+  "test_metrics": {
+    "accuracy": 0.9990131463010609,
+    "precision": 0.6666666666666666,
+    "recall": 0.8085106382978723,
+    "f1": 0.7307692307692307,
+    "pr_auc": 0.7702930893873372,
+    "roc_auc": 0.9630386187563942,
+    "false_positive_rate": 0.0006707618442420391,
+    "false_negative_rate": 0.19148936170212766,
+    "specificity": 0.9993292381557579,
+    "balanced_accuracy": 0.903919938226815,
+    "true_negatives": 28307,
+    "false_positives": 19,
+    "false_negatives": 9,
+    "true_positives": 38,
+    "threshold": 0.065
+  },
+  "calibration_metrics": {
+    "raw_brier_score": 0.0004753851194021706,
+    "calibrated_brier_score": 0.0004388473956360221
+  },
+  "artifacts": [
+    "fraud_model.pkl",
+    "amount_scaler.pkl",
+    "time_scaler.pkl",
+    "probability_calibrator.pkl",
+    "threshold.pkl",
+    "metadata.json"
+  ],
+  "cross_validation": {
+    "cv_roc_auc_mean": 0.9867708249475848,
+    "cv_pr_auc_mean": 0.8564454318807453,
+    "cv_recall_mean": 0.8308909995477161,
+    "cv_precision_mean": 0.890001955291939,
+    "cv_f1_mean": 0.8587047991750808,
+    "cv_roc_auc_std": 0.004112913499663496,
+    "cv_pr_auc_std": 0.02669761949697244
+  },
+  "training_seconds": 103.12523820000024,
+  "python_version": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
+  "mlflow_model_name": "fraud-detection-xgboost",
+  "mlflow_registration_enabled": false,
+  "package_versions": {
+    "numpy": "1.26.4",
+    "pandas": "2.2.1"
+  },
+  "mlflow_run_id": "87c0d3ce97324736a38cf93ad340e30d"
+}

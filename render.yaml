@@ -1,0 +1,37 @@
+services:
+  - type: web
+    name: fraud-api
+    env: docker
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /health
+    envVars:
+      - key: MODEL_DIR
+        value: /app/models
+      - key: MODEL_VERSION
+        value: xgboost-v1.0.0
+      - key: API_KEY
+        sync: false
+      - key: CORS_ORIGINS
+        sync: false
+      - key: MODEL_ARTIFACT_URL
+        sync: false
+      - key: MODEL_ARTIFACT_SHA256
+        sync: false
+      - key: MODEL_ARTIFACT_TOKEN
+        sync: false
+      - key: RATE_LIMIT_PER_MINUTE
+        value: "120"
+      - key: MAX_REQUEST_BODY_BYTES
+        value: "1000000"
+      - key: ENABLE_SHAP
+        value: "false"
+
+  - type: web
+    name: fraud-streamlit
+    env: docker
+    dockerfilePath: ./Dockerfile.streamlit
+    envVars:
+      - key: FRAUD_API_URL
+        sync: false
+      - key: API_KEY
+        sync: false
