@@ -8,6 +8,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY app.py .
 COPY scripts/ scripts/
 COPY entrypoint.sh .
+RUN chmod +x entrypoint.sh
 COPY models/ models/
 
 RUN useradd --create-home --uid 1000 appuser \
