@@ -147,7 +147,7 @@ st.title("Fraud Detection")
 
 # Quiet API availability indicator; no sidebar or dashboard clutter.
 try:
-    health_response = requests.get(f"{API_URL}/health", headers=API_HEADERS, timeout=2)
+    health_response = requests.get(f"{API_URL}/health", headers=API_HEADERS, timeout=15)
     api_online = health_response.ok
 except requests.RequestException:
     api_online = False
@@ -276,7 +276,7 @@ if predict_clicked:
                     "features": features,
                 },
                 headers=API_HEADERS,
-                timeout=10,
+                timeout=30,
             )
             response.raise_for_status()
             show_prediction(response.json())
