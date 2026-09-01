@@ -27,7 +27,7 @@ API_URL = os.getenv("FRAUD_API_URL", "http://localhost:8000").rstrip("/")
 API_KEY = os.getenv("API_KEY", "")
 API_HEADERS = {"X-API-Key": API_KEY} if API_KEY else {}
 PREDICT_URL = f"{API_URL}/predict"
-st.write(f"DEBUG: API_URL is '{API_URL}'")
+
 
 st.set_page_config(
     page_title="Fraud Detection",
