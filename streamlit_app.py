@@ -30,7 +30,7 @@ PREDICT_URL = f"{API_URL}/predict"
 
 
 st.set_page_config(
-    page_title="Fraud Detection",
+    page_title="Fraud-Detection-System",
     page_icon=None,
     layout="centered",
     initial_sidebar_state="collapsed",
@@ -143,7 +143,7 @@ st.markdown(
 )
 
 
-st.title("Fraud Detection")
+st.title("Fraud-Detection-System")
 
 # Quiet API availability indicator; no sidebar or dashboard clutter.
 try:
