@@ -553,7 +553,7 @@ def model_info():
 @app.get("/", tags=["Health"])
 def root():
     return {
-        "service": "Fraud Detection API",
+        "service": "Fraud Detection Detection",
         "status": "running",
         "version": "1.1.0",
         "docs": "/docs",
