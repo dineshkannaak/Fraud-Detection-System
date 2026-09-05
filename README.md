@@ -204,8 +204,8 @@ The threshold was selected via business-cost analysis (see `outputs/threshold_an
 
 ## Live Demo
 
-- API: `https://<your-fraud-api>.onrender.com` — see `/docs` for interactive Swagger UI, `/health` for status, `/model-info` for model metadata.
-- Frontend: `https://<your-fraud-streamlit>.onrender.com`
+- API: `https://fraud-detection-api-ulr2.onrender.com` — see `/docs` for interactive Swagger UI, `/health` for status, `/model-info` for model metadata.
+- Frontend: `https://fraud-streamlit.onrender.com`
 
 > Note: Render free tier spins down on inactivity — first request after idle may take 30–60s to respond.
 
