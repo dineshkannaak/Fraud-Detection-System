@@ -189,6 +189,53 @@ Push the repository to GitHub, create services from `render.yaml`, and configure
 
 After deployment, verify `/health` returns `model_loaded: true`, open `/docs`, inspect `/model-info`, inspect `/metrics`, and submit a known test transaction through Streamlit. A healthy container without loaded artifacts is not ready for predictions.
 
+## Results
+
+Trained and evaluated on the Kaggle `mlg-ulb/creditcardfraud` dataset (train/validation/calibration/test split, no leakage).
+
+| Metric | Value |
+|---|---|
+| ROC-AUC | 0.963 |
+| Recall | 81% |
+| Precision | 67% |
+| Decision threshold | 0.065 |
+
+The threshold was selected via business-cost analysis (see `outputs/threshold_analysis.csv` and `outputs/business_cost_curve.csv`) rather than the default 0.50, to reflect the asymmetric cost of missed fraud vs. false positives.
+
+## Live Demo
+
+- API: `https://<your-fraud-api>.onrender.com` — see `/docs` for interactive Swagger UI, `/health` for status, `/model-info` for model metadata.
+- Frontend: `https://<your-fraud-streamlit>.onrender.com`
+
+> Note: Render free tier spins down on inactivity — first request after idle may take 30–60s to respond.
+
+## Example Request
+
+```bash
+curl -X POST https://<your-fraud-api>.onrender.com/predict \
+  -H "Content-Type: application/json" \
+  -H "X-API-Key: <your-api-key>" \
+  -d '{
+    "transaction_id": "tx_001",
+    "features": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 25.5]
+  }'
+```
+
+Response:
+
+```json
+{
+  "transaction_id": "tx_001",
+  "prediction": 0.0123,
+  "decision_threshold": 0.065,
+  "recommended_action": "approve",
+  "model_version": "xgboost-v1.0.0",
+  "explanation_available": false,
+  "top_reasons": [],
+  "request_id": "..."
+}
+```
+
 ## CI/CD
 
 The workflow runs on pushes and pull requests targeting `main`. It compiles Python files, installs dependencies, runs linting, executes API tests, builds the API container, builds the Streamlit container, and optionally pushes tagged images on a main-branch push. Configure `DOCKER_USERNAME` and `DOCKER_PASSWORD` only if Docker Hub publishing is required.
