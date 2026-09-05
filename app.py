@@ -157,7 +157,7 @@ async def lifespan(_: FastAPI):
 
 
 app = FastAPI(
-    title="Fraud Detection Detection",
+    title="Fraud Detection System",
     default_response_class=ORJSONResponse,
     description="Validated real-time fraud scoring with configurable risk actions.",
     version="1.1.0",
@@ -553,7 +553,7 @@ def model_info():
 @app.get("/", tags=["Health"])
 def root():
     return {
-        "service": "Fraud Detection Detection",
+        "service": "Fraud Detection System",
         "status": "running",
         "version": "1.1.0",
         "docs": "/docs",
