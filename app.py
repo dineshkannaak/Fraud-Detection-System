@@ -1,4 +1,4 @@
-"""Fraud Detection API.
+"""Fraud Detection detection.
 
 The original /predict request contract remains compatible:
 features are ordered as [Time, V1..V28, Amount] and exactly 30 values are required.
@@ -157,7 +157,7 @@ async def lifespan(_: FastAPI):
 
 
 app = FastAPI(
-    title="Fraud Detection API",
+    title="Fraud Detection Detection",
     default_response_class=ORJSONResponse,
     description="Validated real-time fraud scoring with configurable risk actions.",
     version="1.1.0",
